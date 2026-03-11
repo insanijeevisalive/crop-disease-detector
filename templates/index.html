@@ -1,23 +1,77 @@
 <!DOCTYPE html>
 <html>
 <head>
+
 <meta charset="UTF-8">
-<title>AI Crop Disease Detector</title>
+
+<title>Crop Disease Detector</title>
+
 <link rel="stylesheet" href="/static/style.css">
+
 </head>
+
 
 <body>
 
-<h1> Crop Disease Detector</h1>
+<h1>🌿 Crop Disease Detector</h1>
+
 
 <form id="uploadForm">
-<input type="file" id="fileInput">
+
+<input type="file" id="fileInput" accept="image/*">
+
 <button type="submit">Detect Disease</button>
+
 </form>
+
+
+<br>
+
+
+<!-- Image Preview -->
+
+<img id="preview" width="220"
+style="display:none; border-radius:10px; margin-top:20px;">
+
+
+<!-- Result Card -->
 
 <div id="result"></div>
 
+
+
 <script>
+
+
+/* Image preview */
+
+document.getElementById("fileInput").onchange = function(){
+
+let file = this.files[0]
+
+if(file){
+
+let reader = new FileReader()
+
+reader.onload = function(e){
+
+let img = document.getElementById("preview")
+
+img.src = e.target.result
+
+img.style.display = "block"
+
+}
+
+reader.readAsDataURL(file)
+
+}
+
+}
+
+
+
+/* Upload and prediction */
 
 document.getElementById("uploadForm").onsubmit = async function(e){
 
@@ -26,21 +80,36 @@ e.preventDefault()
 let file = document.getElementById("fileInput").files[0]
 
 let formData = new FormData()
+
 formData.append("file", file)
 
+
 let response = await fetch("/predict",{
+
 method:"POST",
+
 body:formData
+
 })
+
 
 let data = await response.json()
 
+
 document.getElementById("result").innerHTML =
+
 "<h2>Disease: "+data.Disease+"</h2>" +
+
+"<h3>Confidence: "+data.Confidence+"%</h3>" +
+
 "<p>"+data.Treatment+"</p>"
+
 }
+
 
 </script>
 
+
 </body>
+
 </html>

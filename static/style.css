@@ -1,30 +1,71 @@
 body{
-font-family: Arial, sans-serif;
-background:#eef7ee;
-text-align:center;
-padding:40px;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(#e8f5e9,#c8e6c9);
+    text-align: center;
+    padding: 40px;
 }
+
+/* Title */
 
 h1{
-color:#2e7d32;
-font-size:40px;
+    color:#1b5e20;
+    font-size:52px;
+    margin-bottom:35px;
 }
 
+/* File input */
+
+input[type="file"]{
+    font-size:18px;
+    margin-right:15px;
+}
+
+/* Button */
+
 button{
-background:#2e7d32;
-color:white;
-border:none;
-padding:12px 25px;
-font-size:16px;
-cursor:pointer;
-border-radius:5px;
+    background:#2e7d32;
+    color:white;
+    border:none;
+    padding:14px 30px;
+    font-size:18px;
+    border-radius:10px;
+    cursor:pointer;
+    transition:0.3s;
 }
 
 button:hover{
-background:#1b5e20;
+    background:#1b5e20;
 }
 
+/* Result card */
+
 #result{
-margin-top:30px;
-font-size:20px;
+    margin-top:50px;
+    background:#ffffff;
+    padding:30px;
+    border-radius:15px;
+    width:420px;
+    margin-left:auto;
+    margin-right:auto;
+    box-shadow:0 6px 20px rgba(0,0,0,0.15);
+}
+
+/* Disease heading */
+
+#result h2{
+    color:#2e7d32;
+    font-size:28px;
+}
+
+/* Confidence */
+
+#result h3{
+    color:#33691e;
+}
+
+/* Treatment */
+
+#result p{
+    font-size:18px;
+    color:#444;
 }
